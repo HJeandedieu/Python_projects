@@ -56,3 +56,18 @@ print(f"Site A at {common_time}:")
 print(a_at_time[['device_id','moisture_pct', 'flow_rate_lpm']])
 print(f"Site B at {common_time}:")
 print(b_at_time[['device_id','moisture_pct', 'flow_rate_lpm']])
+
+df_total = pd.concat([df_a, df_b])
+# print(df_total['moisture_pct'].mean())
+#
+# df_total = df_total.sort_index()
+#
+# df_total['moisture_change'] = df_total['moisture_pct'].diff()
+#
+# filtered = df_total[df_total['moisture_change'] > 3]
+# print(filtered.head())
+#
+# df_a.to_csv("data/site_a_tidy.csv")
+
+print("Mean moisture per device")
+print(df_total.groupby("device_id")['moisture_pct'].mean())
