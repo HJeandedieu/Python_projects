@@ -81,6 +81,8 @@ const input = document.getElementById("input");
 const image = document.getElementById("image");
 const downloadLink = document.getElementById("download-link");
 
+image.style.display = "none";
+
 form.addEventListener("submit", async (e) => {
     e.preventDefault(); // prevent page reload
 
@@ -104,6 +106,7 @@ form.addEventListener("submit", async (e) => {
             image.src = result.url + "?t=" + new Date().getTime(); // cache bust
             // Update download link
             downloadLink.href = result.url;
+            image.style.display = "inline";
         } else {
             alert(result.error || "Failed to generate QR code");
         }
